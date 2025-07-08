@@ -1,5 +1,6 @@
-import Hero from './components/Hero'
-import Listagem from './components/Listagem'
+import Rodape from './components/Rodape'
+import Hero from './containers/Hero'
+import Listagem from './containers/Listagem'
 import { Container, GlobalStyle } from './styles'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Container>
         <Listagem />
       </Container>
+      <Rodape />
     </>
   )
 }
