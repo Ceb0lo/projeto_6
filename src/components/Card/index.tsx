@@ -20,7 +20,7 @@ const Card = () => (
       libero nemo dolore maxime atque eum natus eligendi repudiandae
       voluptatibus. Temporibus!
     </S.Texto>
-    <S.BotaoSaiba>Saiba mais</S.BotaoSaiba>
+    <S.BotaoSaiba to="/italiana">Saiba mais</S.BotaoSaiba>
   </S.Card>
 )
 

@@ -1,17 +1,25 @@
-import Rodape from './components/Rodape'
-import Hero from './containers/Hero'
-import Listagem from './containers/Listagem'
-import { Container, GlobalStyle } from './styles'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import Home from './pages/Home'
+import Italiana from './pages/Italiana'
+import { GlobalStyle } from './styles'
+
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/italiana',
+    element: <Italiana />
+  }
+])
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Hero />
-      <Container>
-        <Listagem />
-      </Container>
-      <Rodape />
+      <RouterProvider router={rotas} />
     </>
   )
 }

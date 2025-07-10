@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import fundo from '../../assets/img/fundo.png'
@@ -5,19 +6,15 @@ import fundo from '../../assets/img/fundo.png'
 export const Fundo = styled.div`
   background-image: url(${fundo});
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: 40px;
-`
-
-export const Logo = styled.img`
-  width: 125px;
-  height: 58px;
-  margin-top: 40px;
-  margin-bottom: 138px;
-`
-
-export const Chamada = styled.h1`
+  font-size: 18px;
   font-weight: bold;
-  font-size: 36px;
+  padding-left: 170px;
+  padding-right: 170px;
+`
+export const Volta = styled(Link)`
+  text-decoration: none;
+  color: #e66767;
 `

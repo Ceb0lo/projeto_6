@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.li`
   position: relative;
@@ -37,15 +38,19 @@ export const Texto = styled.p`
   margin: 8px;
 `
 
-export const BotaoSaiba = styled.button`
+export const BotaoSaiba = styled(Link)`
   text-decoration: none;
   font-size: 14px;
+  font-weight: bold;
   background-color: #e66767;
   color: #ffebd9;
-  border: none;
   width: 82px;
   height: 24px;
+  padding: 6px;
   margin: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export const Teg = styled.span`

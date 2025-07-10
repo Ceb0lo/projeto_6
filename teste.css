@@ -1,19 +1,7 @@
 div{
-  margin-bottom: 80px;
-  margin-top: 32px;
-  display: block;
-  margin-right: 8px;
+  text-decoration: none;
+  padding: 8px;
+  padding-left: 170px;
+  padding-right: 170px;
 }
 
-p{
-font-size: 10px;
-}
-
-footer{
-  margin-bottom: 40px;
-  margin-top: 40px;
-  background-color: #FFEBD9;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
