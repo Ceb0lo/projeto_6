@@ -5,9 +5,9 @@ import { Container } from '../../styles'
 
 const Home = () => (
   <>
-    <Hero />
+    <Hero alteraHero />
     <Container>
-      <Listagem />
+      <Listagem alteraLista />
     </Container>
     <Rodape />
   </>

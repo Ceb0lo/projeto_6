@@ -11,8 +11,7 @@ export const Fundo = styled.div`
   padding-bottom: 40px;
   font-size: 18px;
   font-weight: bold;
-  padding-left: 170px;
-  padding-right: 170px;
+  padding: 60px 170px;
 `
 export const Volta = styled(Link)`
   text-decoration: none;

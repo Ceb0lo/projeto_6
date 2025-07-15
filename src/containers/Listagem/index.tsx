@@ -1,14 +1,36 @@
-import Card from '../../components/Card'
+import CardPratos from '../../components/CardPratos'
+import CardRestaurantes from '../../components/CardRestaurantes'
 
-import { Lista } from './styles'
+import { ListaRestaurantes, ListaPratos } from './styles'
 
-const Listagem = () => (
-  <Lista>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-  </Lista>
-)
+type Props = {
+  alteraLista: boolean
+}
+
+const Listagem = ({ alteraLista }: Props) => {
+  return (
+    <>
+      {alteraLista ? (
+        <ListaRestaurantes>
+          <CardRestaurantes />
+          <CardRestaurantes />
+          <CardRestaurantes />
+          <CardRestaurantes />
+          <CardRestaurantes />
+          <CardRestaurantes />
+        </ListaRestaurantes>
+      ) : (
+        <ListaPratos>
+          <CardPratos />
+          <CardPratos />
+          <CardPratos />
+          <CardPratos />
+          <CardPratos />
+          <CardPratos />
+        </ListaPratos>
+      )}
+    </>
+  )
+}
 
 export default Listagem
