@@ -1,7 +1,7 @@
 import CardPratos from '../../components/CardPratos'
 import CardRestaurantes from '../../components/CardRestaurantes'
 
-import { ListaRestaurantes, ListaPratos } from './styles'
+import * as S from './styles'
 
 type Props = {
   alteraLista: boolean
@@ -11,23 +11,23 @@ const Listagem = ({ alteraLista }: Props) => {
   return (
     <>
       {alteraLista ? (
-        <ListaRestaurantes>
+        <S.ListaRestaurantes>
           <CardRestaurantes />
           <CardRestaurantes />
           <CardRestaurantes />
           <CardRestaurantes />
           <CardRestaurantes />
           <CardRestaurantes />
-        </ListaRestaurantes>
+        </S.ListaRestaurantes>
       ) : (
-        <ListaPratos>
+        <S.ListaPratos>
           <CardPratos />
           <CardPratos />
           <CardPratos />
           <CardPratos />
           <CardPratos />
           <CardPratos />
-        </ListaPratos>
+        </S.ListaPratos>
       )}
     </>
   )

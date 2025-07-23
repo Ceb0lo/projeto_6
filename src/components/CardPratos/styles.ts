@@ -1,9 +1,6 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Card = styled.li`
-  position: relative;
-  overflow: hidden;
   display: block;
   background-color: #e66767;
   color: #ffebd9;
@@ -20,7 +17,7 @@ export const Texto = styled.p`
   margin: 8px;
 `
 
-export const Botao = styled(Link)`
+export const Botao = styled.button`
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
@@ -30,8 +27,13 @@ export const Botao = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-style: none;
+  width: 266.66px;
+  height: 24px;
+  cursor: pointer;
 `
 
 export const ImgCard = styled.img`
   margin: 8px;
+  width: 266.66px;
 `

@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.li`
-  position: relative;
-  overflow: hidden;
   border: 1px solid #e66767;
   display: block;
   background-color: #fff;
