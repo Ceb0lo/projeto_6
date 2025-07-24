@@ -34,7 +34,7 @@ const Modal = ({ modalEstado, fecharModal }: Props) => {
           <S.ImgClose src={Close} alt="fechar" onClick={fecharModal} />
         </S.CardCompra>
       </Container>
-      <S.Overlay></S.Overlay>
+      <S.Overlay onClick={fecharModal} />
     </S.Modal>
   )
 }
