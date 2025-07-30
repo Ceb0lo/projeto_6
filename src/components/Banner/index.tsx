@@ -1,9 +1,14 @@
 import * as S from './styles'
 
-const Banner = () => (
+type Props = {
+  titulo: string
+  tipo: string
+}
+
+const Banner = ({ titulo, tipo }: Props) => (
   <S.Banner>
-    <p>Italiana</p>
-    <h2>La Dolce Vita Trattoria</h2>
+    <p>{tipo}</p>
+    <h2>{titulo}</h2>
   </S.Banner>
 )
 

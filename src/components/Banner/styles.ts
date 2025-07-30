@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
-import fundoItaliana from '../../assets/img/fundoItaliana.png'
-
 export const Banner = styled.div`
-  background-image: url(${fundoItaliana});
+  background-color: rgba(0, 0, 0, 0.75);
   font-size: 36px;
   padding: 24px 170px;
   color: #fff;

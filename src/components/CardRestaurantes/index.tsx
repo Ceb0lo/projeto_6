@@ -1,29 +1,41 @@
-import hiokiSushi from '../../assets/img/hiokiSushi.png'
 import estrela from '../../assets/img/estrela.png'
 
 import * as S from './styles'
 
-const CardRestaurantes = () => (
-  <S.Lista>
+type Props = {
+  id: number
+  titulo: string
+  destacado: boolean
+  avaliacao: number
+  descricao: string
+  capa: string
+}
+
+const CardRestaurantes = ({
+  id,
+  titulo,
+  destacado,
+  avaliacao,
+  descricao,
+  capa
+}: Props) => {
+  return (
     <S.Card>
-      <S.Teg>Japonesa</S.Teg>
-      <S.ImgCard src={hiokiSushi} alt="Sushi" />
+      <S.Teg style={destacado ? { display: 'flex' } : { display: 'none' }}>
+        Destaque
+      </S.Teg>
+      <S.ImgCard src={capa} alt="Capa do restaurante" />
       <S.Cabecalho>
-        <S.Titulo>Hioki Sushi</S.Titulo>
+        <S.Titulo>{titulo}</S.Titulo>
         <S.Nota>
-          4.9
+          {avaliacao}
           <S.Estrela src={estrela} alt="Uma Estrela" />
         </S.Nota>
       </S.Cabecalho>
-      <S.Texto>
-        Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-        frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega
-        rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão
-        sem sair do lar com nosso delivery!
-      </S.Texto>
-      <S.BotaoSaiba to="/italiana">Saiba mais</S.BotaoSaiba>
+      <S.Texto>{descricao}</S.Texto>
+      <S.BotaoSaiba to={`/restaurantes/${id}`}>Saiba mais</S.BotaoSaiba>
     </S.Card>
-  </S.Lista>
-)
+  )
+}
 
 export default CardRestaurantes

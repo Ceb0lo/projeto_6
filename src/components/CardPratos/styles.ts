@@ -36,12 +36,13 @@ export const Botao = styled.button`
   justify-content: center;
   align-items: center;
   border-style: none;
-  width: 266.66px;
+  width: 392px;
   height: 24px;
   cursor: pointer;
 `
 
 export const ImgCard = styled.img`
   margin: 8px;
-  width: 266.66px;
+  width: 392px;
+  height: 260px;
 `

@@ -1,21 +1,25 @@
 import { useState } from 'react'
 
-import PizzaMarguerita from '../../assets/img/PizzaMarguerita.png'
 import Modal from '../Modal'
 
 import * as S from './styles'
 
-const CardPratos = () => {
+type Props = {
+  foto: string
+  preco: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
+const CardPratos = ({ foto, nome, descricao, porcao, preco }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
   return (
-    <S.Lista>
+    <>
       <S.Card>
-        <S.ImgCard src={PizzaMarguerita} alt="Pizza" />
-        <S.Titulo>Pizza Marguerita</S.Titulo>
-        <S.Texto>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
-        </S.Texto>
+        <S.ImgCard src={foto} alt="Pizza" />
+        <S.Titulo>{nome}</S.Titulo>
+        <S.Texto>{descricao}</S.Texto>
         <S.Botao onClick={() => setModalEstaAberto(true)}>
           Adicionar ao carrinho
         </S.Botao>
@@ -23,8 +27,13 @@ const CardPratos = () => {
       <Modal
         modalEstado={modalEstaAberto}
         fecharModal={() => setModalEstaAberto(false)}
+        foto={foto}
+        preco={preco}
+        nome={nome}
+        descricao={descricao}
+        porcao={porcao}
       />
-    </S.Lista>
+    </>
   )
 }
 

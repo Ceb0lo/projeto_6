@@ -1,14 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const Lista = styled.ul`
-  margin: 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 32px;
-  list-style: none;
-`
-
 export const Card = styled.li`
   border: 1px solid #e66767;
   display: block;
@@ -60,14 +52,14 @@ export const BotaoSaiba = styled(Link)`
 `
 
 export const Teg = styled.span`
-  position: absolute;
-  top: 16px;
-  right: 16px;
+  width: 60px;
+  height: 20px;
   background-color: #e66767;
   color: #ffebd9;
   font-size: 12px;
-  padding: 4px 6px;
   font-weight: bold;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ImgCard = styled.img`
