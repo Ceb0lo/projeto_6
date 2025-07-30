@@ -8,7 +8,7 @@ import * as S from './styles'
 const CardPratos = () => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
   return (
-    <>
+    <S.Lista>
       <S.Card>
         <S.ImgCard src={PizzaMarguerita} alt="Pizza" />
         <S.Titulo>Pizza Marguerita</S.Titulo>
@@ -24,7 +24,7 @@ const CardPratos = () => {
         modalEstado={modalEstaAberto}
         fecharModal={() => setModalEstaAberto(false)}
       />
-    </>
+    </S.Lista>
   )
 }
 

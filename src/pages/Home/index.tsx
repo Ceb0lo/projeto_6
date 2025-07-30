@@ -1,13 +1,13 @@
+import CardRestaurantes from '../../components/CardRestaurantes'
 import Rodape from '../../components/Rodape'
-import Hero from '../../containers/Hero'
-import Listagem from '../../containers/Listagem'
+import Hero from '../../components/Hero'
 import { Container } from '../../styles'
 
 const Home = () => (
   <>
-    <Hero alteraHero />
+    <Hero />
     <Container>
-      <Listagem alteraLista />
+      <CardRestaurantes />
     </Container>
     <Rodape />
   </>
