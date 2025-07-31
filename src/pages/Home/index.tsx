@@ -49,6 +49,7 @@ const Home = () => {
               avaliacao={item.avaliacao}
               descricao={item.descricao}
               capa={item.capa}
+              tipo={item.tipo}
             />
           ))}
         </Lista>

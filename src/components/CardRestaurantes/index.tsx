@@ -9,6 +9,7 @@ type Props = {
   avaliacao: number
   descricao: string
   capa: string
+  tipo: string
 }
 
 const CardRestaurantes = ({
@@ -17,14 +18,18 @@ const CardRestaurantes = ({
   destacado,
   avaliacao,
   descricao,
-  capa
+  capa,
+  tipo
 }: Props) => {
   return (
     <S.Card>
-      <S.Teg style={destacado ? { display: 'flex' } : { display: 'none' }}>
-        Destaque
-      </S.Teg>
       <S.ImgCard src={capa} alt="Capa do restaurante" />
+      <S.ContainerTag>
+        <S.Tag>{tipo}</S.Tag>
+        <S.Tag style={destacado ? { display: 'block' } : { display: 'none' }}>
+          Destaque
+        </S.Tag>
+      </S.ContainerTag>
       <S.Cabecalho>
         <S.Titulo>{titulo}</S.Titulo>
         <S.Nota>

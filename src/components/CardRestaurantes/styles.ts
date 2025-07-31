@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.li`
+  position: relative;
   border: 1px solid #e66767;
   display: block;
   background-color: #fff;
@@ -51,15 +52,27 @@ export const BotaoSaiba = styled(Link)`
   align-items: center;
 `
 
-export const Teg = styled.span`
-  width: 60px;
-  height: 20px;
+export const Tag = styled.span`
+  position: absolute;
+  top: 8px;
+  right: 8px;
   background-color: #e66767;
-  color: #ffebd9;
+  color: white;
   font-size: 12px;
   font-weight: bold;
-  justify-content: center;
-  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  &:first-child {
+    right: auto;
+  }
+`
+
+export const ContainerTag = styled.div`
+  position: absolute;
+  top: 8px;
+  right: 80px;
+  display: flex;
+  gap: 5px;
 `
 
 export const ImgCard = styled.img`
