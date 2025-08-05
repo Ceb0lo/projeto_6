@@ -1,17 +1,11 @@
 import styled from 'styled-components'
 
-export const Lista = styled.ul`
-  margin: 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  list-style: none;
-`
-
 export const Card = styled.li`
   display: block;
   background-color: #e66767;
   color: #ffebd9;
+  width: 320px;
+  height: 338px;
 `
 
 export const Titulo = styled.h3`
@@ -36,13 +30,15 @@ export const Botao = styled.button`
   justify-content: center;
   align-items: center;
   border-style: none;
-  width: 392px;
+  width: 304px;
   height: 24px;
   cursor: pointer;
 `
 
 export const ImgCard = styled.img`
   margin: 8px;
-  width: 392px;
-  height: 260px;
+  width: 304px;
+  height: 167px;
+  display: block;
+  object-fit: cover;
 `

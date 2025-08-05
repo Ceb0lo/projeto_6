@@ -14,12 +14,18 @@ type Props = {
 
 const CardPratos = ({ foto, nome, descricao, porcao, preco }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const getDescricaoCorte = (descricaoCorte: string) => {
+    if (descricaoCorte.length > 200) {
+      return descricaoCorte.slice(0, 200) + '...'
+    }
+    return descricaoCorte
+  }
   return (
     <>
       <S.Card>
         <S.ImgCard src={foto} alt="Pizza" />
         <S.Titulo>{nome}</S.Titulo>
-        <S.Texto>{descricao}</S.Texto>
+        <S.Texto>{getDescricaoCorte(descricao)}</S.Texto>
         <S.Botao onClick={() => setModalEstaAberto(true)}>
           Adicionar ao carrinho
         </S.Botao>
