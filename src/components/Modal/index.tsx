@@ -22,7 +22,7 @@ const Modal = ({
   porcao
 }: Props) => {
   const transformaEmReal = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR',{
+    return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL'
     }).format(preco)
