@@ -21,6 +21,12 @@ const Modal = ({
   descricao,
   porcao
 }: Props) => {
+  const transformaEmReal = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
   return (
     <S.Modal style={modalEstado ? { display: 'flex' } : { display: 'none' }}>
       <Container>
@@ -29,8 +35,8 @@ const Modal = ({
           <S.ContainerTexto>
             <h4>{nome}</h4>
             <p>{descricao}</p>
-            <p>Serve:{porcao}</p>
-            <S.Botao>Adicionar ao carrinho - R${preco}</S.Botao>
+            <p>Serve de {porcao}</p>
+            <S.Botao>Adicionar ao carrinho - {transformaEmReal(preco)}</S.Botao>
           </S.ContainerTexto>
           <S.ImgClose src={Close} alt="fechar" onClick={fecharModal} />
         </S.CardCompra>

@@ -37,6 +37,8 @@ export const CardCompra = styled.div`
 export const ImgCompra = styled.img`
   width: 280px;
   height: 280px;
+  display: block;
+  object-fit: cover;
 `
 export const ImgClose = styled.img`
   width: 16px;
