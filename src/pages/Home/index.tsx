@@ -35,6 +35,10 @@ const Home = () => {
       .catch((err) => console.error('Erro ao carregar API:', err))
   }, [])
 
+  if (!restaurantes) {
+    return <h3>Carregando...</h3>
+  }
+
   return (
     <>
       <Hero />

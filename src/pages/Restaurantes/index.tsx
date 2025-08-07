@@ -27,6 +27,10 @@ const Restaurantes = () => {
     (item) => item.id === restauranteId
   )
 
+  if (!restaurantes) {
+    return <h3>Carregando...</h3>
+  }
+
   return (
     <>
       <Header />
