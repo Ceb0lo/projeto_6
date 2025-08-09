@@ -7,6 +7,7 @@ import Header from '../../components/Header'
 import Rodape from '../../components/Rodape'
 import { Container } from '../../styles'
 import { Restaurante } from '../Home'
+import Carrinho from '../../components/Carrinho'
 
 import { Lista } from './styles'
 
@@ -33,6 +34,7 @@ const Restaurantes = () => {
 
   return (
     <>
+      <Carrinho />
       <Header />
 
       {restauranteSelecionado && (
@@ -53,6 +55,7 @@ const Restaurantes = () => {
               nome={prato.nome}
               descricao={prato.descricao}
               porcao={prato.porcao}
+              id={prato.id}
             />
           ))}
         </Lista>

@@ -12,6 +12,10 @@ export const Fundo = styled.div`
   font-size: 18px;
   font-weight: bold;
   padding: 60px 170px;
+
+  span {
+    cursor: pointer;
+  }
 `
 export const Volta = styled(Link)`
   text-decoration: none;

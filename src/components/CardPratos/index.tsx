@@ -10,9 +10,10 @@ type Props = {
   nome: string
   descricao: string
   porcao: string
+  id: number
 }
 
-const CardPratos = ({ foto, nome, descricao, porcao, preco }: Props) => {
+const CardPratos = ({ foto, nome, descricao, porcao, id, preco }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
   const getDescricaoCorte = (descricaoCorte: string) => {
     if (descricaoCorte.length > 200) {
@@ -38,6 +39,7 @@ const CardPratos = ({ foto, nome, descricao, porcao, preco }: Props) => {
         nome={nome}
         descricao={descricao}
         porcao={porcao}
+        id={id}
       />
     </>
   )
