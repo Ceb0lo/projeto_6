@@ -42,3 +42,6 @@ export const ImgCard = styled.img`
   display: block;
   object-fit: cover;
 `
+export const test = styled.div`
+  margin: 8px;
+`
