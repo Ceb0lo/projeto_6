@@ -36,7 +36,7 @@ const Carrinho = () => {
     <S.CardContainer className={estaAberto ? 'esta-aberto' : ''}>
       <S.Overlay onClick={fechaCarrinho} />
       <S.BarraLateral>
-        <ul>
+        <S.ListaItens>
           {items.map((prato) => (
             <S.Card key={prato.id}>
               <S.ImgPrato src={prato.foto} alt="" />
@@ -47,7 +47,7 @@ const Carrinho = () => {
               <button type="button" onClick={() => removePrato(prato.id)} />
             </S.Card>
           ))}
-        </ul>
+        </S.ListaItens>
         <S.ValorTotal>
           <span>Valor total</span>
           <span>{transformaEmReal(valorTotal())}</span>

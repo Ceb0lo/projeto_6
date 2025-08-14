@@ -26,9 +26,18 @@ export const CardContainer = styled.div`
 export const BarraLateral = styled.aside`
   background-color: #e66767;
   z-index: 1;
-  padding: 32px 8px 0 8px;
+  padding: 32px 8px 32px 8px;
   width: 360px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+export const ListaItens = styled.ul`
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 `
 export const ValorTotal = styled.div`
   font-size: 14px;
