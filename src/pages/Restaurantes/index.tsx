@@ -8,8 +8,10 @@ import Rodape from '../../components/Rodape'
 import { Container } from '../../styles'
 import { Restaurante } from '../Home'
 import Carrinho from '../../components/Carrinho'
+import Endereco from '../../components/Endereco'
 
 import { Lista } from './styles'
+import Pagamento from '../../components/Pagamento'
 
 const Restaurantes = () => {
   const { id } = useParams()
@@ -35,6 +37,8 @@ const Restaurantes = () => {
   return (
     <>
       <Carrinho />
+      <Endereco />
+      <Pagamento />
       <Header />
 
       {restauranteSelecionado && (
@@ -42,6 +46,7 @@ const Restaurantes = () => {
           key={restauranteSelecionado.id}
           titulo={restauranteSelecionado.titulo}
           tipo={restauranteSelecionado.tipo}
+          capa={restauranteSelecionado.capa}
         />
       )}
 

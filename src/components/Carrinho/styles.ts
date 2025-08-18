@@ -2,36 +2,6 @@ import styled from 'styled-components'
 
 import lixeira from '../../assets/img/lixeira.png'
 
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-`
-export const CardContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: flex-end;
-
-  &.esta-aberto {
-    display: flex;
-  }
-`
-export const BarraLateral = styled.aside`
-  background-color: #e66767;
-  z-index: 1;
-  padding: 32px 8px 32px 8px;
-  width: 360px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`
 export const ListaItens = styled.ul`
   flex: 1;
   overflow-y: auto;
@@ -84,20 +54,4 @@ export const ImgPrato = styled.img`
   height: 80px;
   object-fit: cover;
   margin: 8px;
-`
-export const BotaoCompra = styled.button`
-  text-decoration: none;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  background-color: #ffebd9;
-  color: #e66767;
-  width: 100%;
-  height: 24px;
-  padding: 4px;
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
-import { aberto } from '../../store/reducers/carrinho'
+import { carrinhoAberto } from '../../store/reducers/carrinho'
 import logo from '../../assets/img/logo.png'
 
 import { Fundo, Volta } from './styles'
@@ -10,7 +10,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   const abreCarrinho = () => {
-    dispatch(aberto())
+    dispatch(carrinhoAberto())
   }
 
   const { items } = useSelector((state: RootReducer) => state.carrinho)

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type CarrinhoState = {
   items: ItemCarrinho[]
-  estaAberto: boolean
+  carrinhoEstaAberto: boolean
 }
 
 type ItemCarrinho = {
@@ -17,7 +17,7 @@ type ItemCarrinho = {
 
 const initialState: CarrinhoState = {
   items: [],
-  estaAberto: false
+  carrinhoEstaAberto: false
 }
 
 const carrinhoSlice = createSlice({
@@ -38,14 +38,15 @@ const carrinhoSlice = createSlice({
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
-    aberto: (state) => {
-      state.estaAberto = true
+    carrinhoAberto: (state) => {
+      state.carrinhoEstaAberto = true
     },
-    fechado: (state) => {
-      state.estaAberto = false
+    carrinhoFechado: (state) => {
+      state.carrinhoEstaAberto = false
     }
   }
 })
 
-export const { add, remove, aberto, fechado } = carrinhoSlice.actions
+export const { add, remove, carrinhoAberto, carrinhoFechado } =
+  carrinhoSlice.actions
 export default carrinhoSlice.reducer

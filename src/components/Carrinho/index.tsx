@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
-import { fechado, remove } from '../../store/reducers/carrinho'
+import { carrinhoFechado, remove } from '../../store/reducers/carrinho'
+import { enderecoAberto } from '../../store/reducers/endereco'
+import * as GS from '../../styles'
 
 import * as S from './styles'
 
 const Carrinho = () => {
+  const dispatch = useDispatch()
   const transformaEmReal = (preco: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -13,13 +16,16 @@ const Carrinho = () => {
     }).format(preco)
   }
 
-  const { estaAberto, items } = useSelector(
+  const { carrinhoEstaAberto, items } = useSelector(
     (state: RootReducer) => state.carrinho
   )
 
-  const dispatch = useDispatch()
   const fechaCarrinho = () => {
-    dispatch(fechado())
+    dispatch(carrinhoFechado())
+  }
+  const aberEndereco = () => {
+    dispatch(carrinhoFechado())
+    dispatch(enderecoAberto())
   }
 
   const valorTotal = () => {
@@ -33,9 +39,11 @@ const Carrinho = () => {
   }
 
   return (
-    <S.CardContainer className={estaAberto ? 'esta-aberto' : ''}>
-      <S.Overlay onClick={fechaCarrinho} />
-      <S.BarraLateral>
+    <GS.BarraLateralContainer
+      className={carrinhoEstaAberto ? 'esta-aberto' : ''}
+    >
+      <GS.Overlay onClick={fechaCarrinho} />
+      <GS.BarraLateral>
         <S.ListaItens>
           {items.map((prato) => (
             <S.Card key={prato.id}>
@@ -52,9 +60,9 @@ const Carrinho = () => {
           <span>Valor total</span>
           <span>{transformaEmReal(valorTotal())}</span>
         </S.ValorTotal>
-        <S.BotaoCompra>Continuar com a entrega</S.BotaoCompra>
-      </S.BarraLateral>
-    </S.CardContainer>
+        <GS.Botao onClick={aberEndereco}>Continuar com a entrega</GS.Botao>
+      </GS.BarraLateral>
+    </GS.BarraLateralContainer>
   )
 }
 

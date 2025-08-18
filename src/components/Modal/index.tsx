@@ -1,14 +1,14 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { add } from '../../store/reducers/carrinho'
+import { add, carrinhoAberto } from '../../store/reducers/carrinho'
 import Close from '../../assets/img/close.png'
-import { Container } from '../../styles'
+import { Container, Overlay } from '../../styles'
+import { RootReducer } from '../../store'
+import { modalFechado } from '../../store/reducers/modal'
 
 import * as S from './styles'
 
 type Props = {
-  modalEstado: boolean
-  fecharModal: () => void
   foto: string
   preco: number
   nome: string
@@ -16,16 +16,8 @@ type Props = {
   porcao: string
   id: number
 }
-const Modal = ({
-  modalEstado,
-  fecharModal,
-  foto,
-  preco,
-  nome,
-  descricao,
-  porcao,
-  id
-}: Props) => {
+const Modal = ({ foto, preco, nome, descricao, porcao, id }: Props) => {
+  const { modalAbertoId } = useSelector((state: RootReducer) => state.modal)
   const transformaEmReal = (preco: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -34,6 +26,8 @@ const Modal = ({
   }
   const dispatch = useDispatch()
   const addCarrinho = () => {
+    dispatch(modalFechado())
+    dispatch(carrinhoAberto())
     dispatch(
       add({
         nome,
@@ -46,12 +40,12 @@ const Modal = ({
       })
     )
   }
+  const fechaModal = () => {
+    dispatch(modalFechado())
+  }
 
   return (
-    <S.Modal
-      key={id}
-      style={modalEstado ? { display: 'flex' } : { display: 'none' }}
-    >
+    <S.Modal key={id} className={modalAbertoId ? 'visevel' : ''}>
       <Container>
         <S.CardCompra className="destaque">
           <S.ImgCompra src={foto} alt="Pizza de Marguerita" />
@@ -63,10 +57,10 @@ const Modal = ({
               Adicionar ao carrinho - {transformaEmReal(preco)}
             </S.Botao>
           </S.ContainerTexto>
-          <S.ImgClose src={Close} alt="fechar" onClick={fecharModal} />
+          <S.ImgClose src={Close} alt="fechar" onClick={fechaModal} />
         </S.CardCompra>
       </Container>
-      <S.Overlay onClick={fecharModal} />
+      <Overlay onClick={fechaModal} />
     </S.Modal>
   )
 }

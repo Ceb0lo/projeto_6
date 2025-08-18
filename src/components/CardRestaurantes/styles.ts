@@ -78,4 +78,5 @@ export const ContainerTag = styled.div`
 export const ImgCard = styled.img`
   width: 472px;
   height: 217px;
+  object-fit: cover;
 `
