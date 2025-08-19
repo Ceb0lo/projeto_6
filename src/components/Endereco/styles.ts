@@ -1,19 +1,6 @@
 import styled from 'styled-components'
 
-export const EnderecoContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: flex-end;
-
-  &.esta-aberto {
-    display: flex;
-  }
-`
-export const Formulario = styled.form`
+export const Formulario = styled.div`
   display: flex;
   flex-direction: column;
   color: #ffebd9;
@@ -27,7 +14,7 @@ export const Formulario = styled.form`
     margin-bottom: 8px;
     margin-top: 8px;
     height: 32px;
-    border: none;
+    border: 1px solid #ffebd9;
     background-color: #ffebd9;
     color: #000;
   }

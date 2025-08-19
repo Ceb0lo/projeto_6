@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { enderecoAberto } from '../../store/reducers/endereco'
 import { pagamentoFechado } from '../../store/reducers/pagamento'
-import * as GS from '../../styles'
+import * as GS from '../../styles' //Global Style
+import { confirmacaoAberto } from '../../store/reducers/confirmacao'
 
-import * as S from './styles'
+import * as S from './styles' //Style
 
 const Pagamento = () => {
   const dispatch = useDispatch()
@@ -16,6 +17,10 @@ const Pagamento = () => {
     dispatch(enderecoAberto())
     dispatch(pagamentoFechado())
   }
+  const aberConfirmacao = () => {
+    dispatch(confirmacaoAberto())
+    dispatch(pagamentoFechado())
+  }
   return (
     <GS.BarraLateralContainer
       className={pagamentoEstaAberto ? 'esta-aberto' : ''}
@@ -24,29 +29,29 @@ const Pagamento = () => {
       <GS.BarraLateral>
         <S.Formulario>
           <h3>Pagamento - Valor a pagar xxxx</h3>
-          <label>Nome no cartão</label>
-          <input type="text" />
+          <label htmlFor="nomeCartao">Nome no cartão</label>
+          <input type="text" id="nomeCartao" />
           <div>
-            <div>
-              <label>Número do cartão</label>
-              <input type="number" />
+            <div className="numeroC">
+              <label htmlFor="numeroCartao">Número do cartão</label>
+              <input type="number" id="numeroCartao" />
             </div>
-            <div>
-              <label>CVV</label>
-              <input type="number" />
+            <div className="cvv">
+              <label htmlFor="cvv">CVV</label>
+              <input type="number" id="cvv" />
             </div>
           </div>
           <div>
             <div>
-              <label>Mês de vencimento</label>
-              <input type="number" />
+              <label htmlFor="mesV">Mês de vencimento</label>
+              <input type="number" id="mesV" />
             </div>
             <div>
-              <label>Ano do vencimento</label>
-              <input type="number" />
+              <label htmlFor="anoV">Ano do vencimento</label>
+              <input type="number" id="anoV" />
             </div>
           </div>
-          <GS.Botao>Finalizar pagamento</GS.Botao>
+          <GS.Botao onClick={aberConfirmacao}>Finalizar pagamento</GS.Botao>
         </S.Formulario>
         <GS.Botao onClick={volta}>Voltar para a edição de endereço</GS.Botao>
       </GS.BarraLateral>

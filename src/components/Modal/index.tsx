@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { add, carrinhoAberto } from '../../store/reducers/carrinho'
 import Close from '../../assets/img/close.png'
-import { Container, Overlay } from '../../styles'
 import { RootReducer } from '../../store'
 import { modalFechado } from '../../store/reducers/modal'
+import { Container, Overlay } from '../../styles'
 
 import * as S from './styles'
 

@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { Restaurante } from '../Home'
 import Banner from '../../components/Banner'
 import CardPratos from '../../components/CardPratos'
 import Header from '../../components/Header'
 import Rodape from '../../components/Rodape'
-import { Container } from '../../styles'
-import { Restaurante } from '../Home'
 import Carrinho from '../../components/Carrinho'
 import Endereco from '../../components/Endereco'
+import Pagamento from '../../components/Pagamento'
+import Confirmacao from '../../components/Confirmacao'
+import { Container } from '../../styles'
 
 import { Lista } from './styles'
-import Pagamento from '../../components/Pagamento'
 
 const Restaurantes = () => {
   const { id } = useParams()
@@ -39,6 +40,7 @@ const Restaurantes = () => {
       <Carrinho />
       <Endereco />
       <Pagamento />
+      <Confirmacao />
       <Header />
 
       {restauranteSelecionado && (

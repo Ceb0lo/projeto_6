@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Formulario = styled.form`
+export const Formulario = styled.div`
   display: flex;
   flex-direction: column;
   color: #ffebd9;
@@ -14,7 +14,7 @@ export const Formulario = styled.form`
     margin-bottom: 8px;
     margin-top: 8px;
     height: 32px;
-    border: none;
+    border: 1px solid #ffebd9;
     background-color: #ffebd9;
     color: #000;
   }
@@ -24,6 +24,14 @@ export const Formulario = styled.form`
     div {
       display: flex;
       flex-direction: column;
+
+      &.numeroC {
+        width: 224px;
+      }
+
+      &.cvv {
+        width: 87px;
+      }
     }
   }
 `

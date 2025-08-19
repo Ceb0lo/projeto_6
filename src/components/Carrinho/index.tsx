@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { carrinhoFechado, remove } from '../../store/reducers/carrinho'
 import { enderecoAberto } from '../../store/reducers/endereco'
-import * as GS from '../../styles'
+import * as GS from '../../styles' //Global Style
 
-import * as S from './styles'
+import * as S from './styles' //Style
 
 const Carrinho = () => {
   const dispatch = useDispatch()
