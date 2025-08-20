@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Formulario = styled.div`
+export const Formulario = styled.form`
   display: flex;
   flex-direction: column;
   color: #ffebd9;
@@ -24,6 +24,9 @@ export const Formulario = styled.div`
     div {
       display: flex;
       flex-direction: column;
+      &.meio {
+        width: 155px;
+      }
     }
   }
 `

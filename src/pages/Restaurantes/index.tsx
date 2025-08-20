@@ -7,10 +7,9 @@ import CardPratos from '../../components/CardPratos'
 import Header from '../../components/Header'
 import Rodape from '../../components/Rodape'
 import Carrinho from '../../components/Carrinho'
-import Endereco from '../../components/Endereco'
-import Pagamento from '../../components/Pagamento'
 import Confirmacao from '../../components/Confirmacao'
 import { Container } from '../../styles'
+import Validacao from '../../components/Validacao'
 
 import { Lista } from './styles'
 
@@ -38,8 +37,7 @@ const Restaurantes = () => {
   return (
     <>
       <Carrinho />
-      <Endereco />
-      <Pagamento />
+      <Validacao />
       <Confirmacao />
       <Header />
 

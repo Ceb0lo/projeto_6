@@ -34,6 +34,10 @@ export const BarraLateral = styled.aside`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  &.esta-fechado {
+    display: none;
+  }
 `
 export const BarraLateralContainer = styled.div`
   position: fixed;
