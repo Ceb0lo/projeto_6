@@ -18,12 +18,6 @@ type Props = {
 }
 const Modal = ({ foto, preco, nome, descricao, porcao, id }: Props) => {
   const { modalAbertoId } = useSelector((state: RootReducer) => state.modal)
-  const transformaEmReal = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
   const dispatch = useDispatch()
   const addCarrinho = () => {
     dispatch(modalFechado())
@@ -54,7 +48,11 @@ const Modal = ({ foto, preco, nome, descricao, porcao, id }: Props) => {
             <p>{descricao}</p>
             <p>Serve de {porcao}</p>
             <S.Botao onClick={addCarrinho}>
-              Adicionar ao carrinho - {transformaEmReal(preco)}
+              Adicionar ao carrinho -{' '}
+              {preco.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              })}
             </S.Botao>
           </S.ContainerTexto>
           <S.ImgClose src={Close} alt="fechar" onClick={fechaModal} />

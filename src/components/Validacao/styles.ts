@@ -27,6 +27,24 @@ export const Formulario = styled.form`
       &.meio {
         width: 155px;
       }
+      &.cvv {
+        width: 87px;
+      }
+      &.numeroC {
+        width: 228px;
+      }
     }
+  }
+`
+export const Texto = styled.div`
+  color: #ffebd9;
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 14px;
+    margin-bottom: 16px;
   }
 `

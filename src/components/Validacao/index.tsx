@@ -1,10 +1,13 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import { useComprarMutation } from '../../services/api'
 import { RootReducer } from '../../store'
+import { validacaoFechado } from '../../store/reducers/validacao'
+import { carrinhoAberto } from '../../store/reducers/carrinho'
+import { selectTotalCarrinho } from '../Carrinho'
 import * as GS from '../../styles' //Global Style
 
 import * as S from './styles' //Style
@@ -13,8 +16,20 @@ const Validacao = () => {
   const { validacaoEstaAberto } = useSelector(
     (state: RootReducer) => state.validacao
   )
-  const [step, setStep] = useState<'endereco' | 'pagamento'>('endereco')
-  const [comprar] = useComprarMutation()
+  const dispatch = useDispatch()
+  const total = useSelector(selectTotalCarrinho)
+
+  const volta = () => {
+    dispatch(validacaoFechado())
+    dispatch(carrinhoAberto())
+  }
+  const sair = () => {
+    dispatch(validacaoFechado())
+  }
+  const [step, setStep] = useState<'endereco' | 'pagamento' | 'confirmacao'>(
+    'endereco'
+  )
+  const [comprar, { data }] = useComprarMutation()
   const form = useFormik({
     initialValues: {
       nome: '',
@@ -39,11 +54,14 @@ const Validacao = () => {
       cidade: Yup.string()
         .min(5, 'A cidade precisa ter no pelo menos 5 caracteres')
         .required('O campo e obrigatorio'),
-      cep: Yup.number()
-        .min(8, 'O CEP precisa ter 8 caracteres')
-        .required('O campo e obrigatorio'),
+      cep: Yup.string()
+        .matches(
+          /^\d{5}-?\d{3}$/,
+          'Digite um CEP válido (ex: 12345678 ou 12345-678)'
+        )
+        .required('O campo é obrigatório'),
       numero: Yup.number()
-        .min(1, 'O número precisa ter no pelo menos 1 caracteres')
+        .min(1, 'O número precisa ter no pelo menos 1 dígitos')
         .required('O campo e obrigatorio'),
       complemento: Yup.string().min(
         2,
@@ -52,21 +70,20 @@ const Validacao = () => {
       nomeCartao: Yup.string()
         .min(5, 'O nome no cartão precisa ter no pelo menos 5 caracteres')
         .required('O campo e obrigatorio'),
-      numeroCartao: Yup.number()
-        .min(16, 'O número do cartão precisa ter 16 caracteres')
-        .max(19, 'O número do cartão precisa ter 19 caracteres')
+      numeroCartao: Yup.string()
+        .matches(
+          /^(?:\d{4}[- ]?){3}\d{4}$/,
+          'Digite um número de cartão válido (16 dígitos)'
+        )
         .required('O campo e obrigatorio'),
-      cvv: Yup.number()
-        .min(3, 'O CVV precisa ter 3 caracteres')
-        .max(3, 'O CVV precisa ter 3 caracteres')
+      cvv: Yup.string()
+        .matches(/^\d{3}$/, 'O CVV deve ter exatamente 3 dígitos')
         .required('O campo e obrigatorio'),
       mesV: Yup.number()
-        .min(2, 'O mês de vencimento precisa ter 2 caracteres')
-        .max(2, 'O mês de vencimento precisa ter 2 caracteres')
+        .min(12, 'Temos somente 12 meses ')
         .required('O campo e obrigatorio'),
       anoV: Yup.number()
-        .min(2, 'O ano de vencimento precisa ter 2 caracteres')
-        .max(2, 'O mês de vencimento precisa ter 2 caracteres')
+        .max(99, 'O ano de vencimento precisa ter 2 caracteres')
         .required('O campo e obrigatorio')
     }),
     onSubmit: (values) => {
@@ -182,7 +199,7 @@ const Validacao = () => {
             onBlur={form.handleBlur}
           />
           <GS.Botao
-            type="button"
+            type="submit"
             onClick={async () => {
               const errors = await form.validateForm()
               if (
@@ -199,11 +216,17 @@ const Validacao = () => {
             Continuar com o pagamento
           </GS.Botao>
         </S.Formulario>
-        <GS.Botao>Voltar para o carrinho</GS.Botao>
+        <GS.Botao onClick={volta}>Voltar para o carrinho</GS.Botao>
       </GS.BarraLateral>
       <GS.BarraLateral className={step === 'pagamento' ? '' : 'esta-fechado'}>
         <S.Formulario onSubmit={form.handleSubmit}>
-          <h3>Pagamento - Valor a pagar xxxx</h3>
+          <h3>
+            Pagamento - Valor a pagar{' '}
+            {total.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            })}
+          </h3>
           <label htmlFor="nomeCartao">Nome no cartão</label>
           <input
             type="text"
@@ -226,7 +249,7 @@ const Validacao = () => {
                 onBlur={form.handleBlur}
               />
               <small>
-                {getMensagemErro('numeroCartao}', form.errors.numeroCartao)}
+                {getMensagemErro('numeroCartao', form.errors.numeroCartao)}
               </small>
             </div>
             <div className="cvv">
@@ -268,11 +291,50 @@ const Validacao = () => {
               <small>{getMensagemErro('anoV', form.errors.anoV)}</small>
             </div>
           </div>
-          <GS.Botao>Finalizar pagamento</GS.Botao>
+          <GS.Botao
+            type="submit"
+            onClick={async () => {
+              const errors = await form.validateForm()
+              if (
+                !errors.nomeCartao &&
+                !errors.numeroCartao &&
+                !errors.cvv &&
+                !errors.mesV &&
+                !errors.anoV
+              ) {
+                setStep('confirmacao')
+              }
+            }}
+          >
+            Finalizar pagamento
+          </GS.Botao>
         </S.Formulario>
         <GS.Botao type="button" onClick={() => setStep('endereco')}>
           Voltar para a edição de endereço
         </GS.Botao>
+      </GS.BarraLateral>
+      <GS.BarraLateral className={step === 'confirmacao' ? '' : 'esta-fechado'}>
+        <S.Texto>
+          <h3>Pedido realizado - {data?.orderId ?? 'Carregando...'}</h3>
+          <p>
+            Estamos felizes em informar que seu pedido já está em processo de
+            preparação e, em breve, será entregue no endereço fornecido.
+          </p>
+          <p>
+            Gostaríamos de ressaltar que nossos entregadores não estão
+            autorizados a realizar cobranças extras.
+          </p>
+          <p>
+            Lembre-se da importância de higienizar as mãos após o recebimento do
+            pedido, garantindo assim sua segurança e bem-estar durante a
+            refeição.
+          </p>
+          <p>
+            Esperamos que desfrute de uma deliciosa e agradável experiência
+            gastronômica. Bom apetite!
+          </p>
+          <GS.Botao onClick={sair}>Concluir</GS.Botao>
+        </S.Texto>
       </GS.BarraLateral>
     </GS.BarraLateralContainer>
   )

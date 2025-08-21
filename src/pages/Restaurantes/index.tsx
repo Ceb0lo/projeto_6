@@ -7,7 +7,6 @@ import CardPratos from '../../components/CardPratos'
 import Header from '../../components/Header'
 import Rodape from '../../components/Rodape'
 import Carrinho from '../../components/Carrinho'
-import Confirmacao from '../../components/Confirmacao'
 import { Container } from '../../styles'
 import Validacao from '../../components/Validacao'
 
@@ -38,7 +37,6 @@ const Restaurantes = () => {
     <>
       <Carrinho />
       <Validacao />
-      <Confirmacao />
       <Header />
 
       {restauranteSelecionado && (

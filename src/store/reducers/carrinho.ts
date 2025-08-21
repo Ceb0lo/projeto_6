@@ -38,6 +38,13 @@ const carrinhoSlice = createSlice({
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
+    setQuantidade: (
+      state,
+      action: PayloadAction<{ id: number; quantidade: number }>
+    ) => {
+      const item = state.items.find((items) => items.id == action.payload.id)
+      if (item) item.quantidade = action.payload.quantidade
+    },
     carrinhoAberto: (state) => {
       state.carrinhoEstaAberto = true
     },
